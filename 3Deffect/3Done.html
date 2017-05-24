@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>3D图片轮播</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    .wrap{width:400px;height:400px;margin:50px auto;position:relative;-webkit-transform-style: preserve-3d;-webkit-perspective: 1200px;border:1px solid #ccc;}
+    #left{width:50px;height:50px;position:absolute;left:-50px;top:150px;background:red;font:24px/50px "微软雅黑";text-align:center;}
+    #right{width:50px;height:50px;position:absolute;right:-50px;top:150px;background:red;font:24px/50px "微软雅黑";text-align:center;}
+    .wrap a{display: block;width:400px;height:400px;position:absolute;left:0px;top:0px;-webkit-transform-origin: bottom;-webkit-transform: rotateX(180deg);opacity:0;}
+    .wrap a img{width:100%;height:100%;}
+    .wrap a.hide{-webkit-animation: 2s hide;opacity:0;-webkit-transform: rotateX(180deg);}
+    .wrap a.show{-webkit-animation: 2s show;opacity:1;  -webkit-transform: rotateX(0deg);}
+    @-webkit-keyframes hide {
+        0%{
+            -webkit-transform: rotateX(0deg);
+            opacity: 1;
+        }
+        100%{
+            -webkit-transform: rotateX(-180deg);
+            opacity: 0;
+        }
+    }
+    @-webkit-keyframes show {
+        0%{
+            -webkit-transform: rotateX(180deg);
+            opacity: 0;
+        }
+        50%
+        {
+            -webkit-transform:rotateX(-25deg);
+            opacity:1;
+        }
+        60%
+        {
+            -webkit-transform:rotateX(18deg);
+            opacity:1;
+        }
+        70%
+        {
+            -webkit-transform:rotateX(-12deg);
+            opacity:1;
+        }
+        80%
+        {
+            -webkit-transform:rotateX(8deg);
+            opacity:1;
+        }
+        90%
+        {
+            -webkit-transform:rotateX(-6deg);
+            opacity:1;
+        }
+        100%{
+            -webkit-transform: rotateX(0deg);
+            opacity: 1;
+        }
+    }
+</style>
+<body>
+<div class="wrap">
+   <div id="left">上</div>
+    <div id="right">下</div>
+    <a class="show"href=""><img src="images/2.jpg" alt=""></a>
+    <a href=""><img src="images/1.jpg" alt=""></a>
+    <a href=""><img src="images/3.jpg" alt=""></a>
+    <a href=""><img src="images/4.jpg" alt=""></a>
+</div>
+</body>
+<script>
+    var LeftButtn = document.getElementById("left");
+    var RightButton = document.getElementById("right");
+    var allA = document.getElementsByTagName("a");
+    var iNow = 0 ;
+    LeftButtn.onclick = function(){
+        allA[iNow].className = "hide";
+        --iNow;
+        if(iNow<0)
+        {
+            iNow = allA.length-1;
+        }
+        allA[iNow].className = "show";
+    }
+    RightButton.onclick = function(){
+        allA[iNow].className = "hide";
+        ++iNow;
+        if(iNow>=allA.length)
+        {
+            iNow = 0;
+        }
+        allA[iNow].className = "show";
+    }
+</script>
+</html>

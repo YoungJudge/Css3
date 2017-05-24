@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>Flex布局</title>
+    <link rel="stylesheet" href="">
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    html,body{height:100%;}  /*显示存在*/
+    body{display:flex;flex-flow: column nowrap;}
+    main{flex:1 0 auto;display:flex;}
+    footer{flex: 0 0 90px;padding:10px;color:#fff;background:rgba(61, 100, 158,0.9)}
+    aside{flex:0 0 40px;/*不会放大或者缩小，固定在40px*/display:flex;flex-flow: column;justify-content: space-around;align-items: center;/*方向改变表示上图标水平居中*/background:  #f2f2f2;}
+    aside i{font-size: 0.9em; /*图标的字体大小*/}
+    .content{display:flex;flex:1 0 auto;flex-flow:column nowrap;}
+    .music-head{flex: 0 0 280px;display:flex;padding:40px;background:#4e4e4e;}
+    .music-list{flex: 1 0 auto;list-style-type: none;padding:5px 10px 0px;}
+    li{display:flex;padding:0 20px;min-height:50px;}
+    li p {flex: 0 0 25%;line-height:50px;}
+    li span.catty-cloud { border: 1px solid black; font-size: 0.6em; padding: 3px; }
+    li:nth-child(2n) { background-color: #f2f2f2; }
+    .catty-music{ flex: 1 0 auto; display: flex; flex-direction: column; font-weight: 300; color: #fff; padding-left: 50px; } .catty-music div:nth-child(1){ margin-bottom: auto; } .catty-music div:nth-child(2){ margin-top: 0; } .catty-music div:nth-child(2) i.fa{ font-size: 0.9em; padding: 0 0.7em; font-weight: 300; } .catty-music div:nth-child(1) p:first-child{ font-size: 1.8em; margin: 0 0 10px; } .catty-music div:nth-child(1) p:not(:first-child){ font-size: 0.9em; margin: 2px 0; }著作权归作者所有。
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        商业转载请联系作者获得授权,非商业转载请注明出处。 商业转载请联系作者获得授权,非商业转载请注明出处。
+</style>
+<body>
+<main>
+    <aside>
+        <i class="fa fa-bars"></i>
+        <i class="fa fa-home"></i>
+        <i class="fa fa-search"></i>
+        <i class="fa fa-volume-up"></i>
+        <i class="fa fa-user"></i>
+        <i class="fa fa-spotify"></i>
+        <i class="fa fa-cog"></i>
+        <i class="fa fa-soundcloud"></i>
+       </aside>
+    <section class="content">
+        <div class="music-head"> <!--第一个列表项：包含音乐详情-->
+            <img src="images/Rect.jpg" /><!--专辑封面-->
+            <section class="catty-music"> <!--专辑的其它细节--> <div>
+                <p>CattyBoard Top 100 Single Charts (11.06.36)</p>
+                <p>Unknown Artist</p>
+                <p>2016 . Charts . 100 songs</p> </div>
+                <div> <!--Music controls-->
+                    <i class="fa fa-play">Play all</i>
+                    <i class="fa fa-plus">Add to</i>
+                    <i class="fa fa-ellipsis-h">More</i> </div>
+            </section>
+        </div>
+        <!--end .music-head--> <!--第二个列表项：包含专辑中的歌曲列表-->
+        <ul class="music-list">
+            <li> <p>1. One Dance</p> <p>Crake feat CatKid & Cyla</p> <p>2:54</p> <p><span class="catty-cloud">CATTY CLOUD SYNC</span></p> </li>
+            <li> <p>2. Panda</p> <p>Cattee</p> <p>4:06</p> <p><span class="catty-cloud">CATTY CLOUD SYNC</span></p> </li>
+            <li> <p>3. Can't Stop the Feeling!</p> <p>Catin Cimberlake</p> <p>3:56</p> <p><span class="catty-cloud">CATTY CLOUD SYNC</span></p> </li>
+            <li> <p>4. Work From Home</p> <p>Cat Harmony feat Colla</p> <p>3:34</p> <p><span class="catty-cloud">CATTY CLOUD SYNC</span></p> </li>
+        </ul>
+
+    </section>
+</main>
+<footer></footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>CSS3结构选择器</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    ul{list-style-type:none;width:100px;position:absolute;left:50%;top:50%;-webkit-transform: translate(-50%,-50%);}
+    p{position:absolute;left:50%;top:30%;-webkit-transform: translate(-50%,-50%);border:1px solid #ccc;padding:10px;}
+    li{width:100px;height:30px;}
+    li:nth-child(1){background:red;}
+    li:nth-child(2){background:blue;}
+    li:nth-child(3){background:#3C6EA8;}
+</style>
+<body>
+<p>这里千万注意的即使p:nth-child(1)表示的就是找到P元素的父节点下面的第一个子节点。要是不是P则找不到<br>
+ 所以第一个下面UL里面0元素没有变色，而下面的li变色了,但是序号是2了.<br>
+  要是用li:nth-of-type(1)则不会按照HTML顺序而是按照类型。找到li的父元素下面的第一个子节点是li的,所以第3个变色了，序号是3，因为li就是第3个,要是顺序则第4个了
+</p>
+<ul>
+    <div>0</div>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+</body>
+</html>

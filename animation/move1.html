@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>关键帧</title>
+</head>
+<style>
+    *{margin: 0px;padding:0px;}
+    @-webkit-keyframes move {
+        0%{width:0px;}
+        30%{width:50px;}
+        50%{width:100px;}
+        75%{width:150px;}
+        100%{width:200px;}
+    }
+    @-moz-keyframes move{
+        0%{width:0px;}
+        30%{width:50px;}
+        50%{width:100px;}
+        75%{width:150px;}
+        100%{width:200px;}
+    }
+    @keyframes move{
+        0%{width:0px;}
+        30%{width:50px;}
+        50%{width:100px;}
+        75%{width:150px;}
+        100%{width:200px;}
+    }
+    .box{background:red;width:200px;height:30px;border:1px solid black;-webkit-animation:2s move linear;-moz-animation: 2s move linear;}
+</style>
+<body>
+<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>自定义时钟</title>
+</head>
+<style>
+  *{margin:0px;padding:0px;}
+  ul{list-style-type: none;}
+    .main{width:500px;height:500px;position:absolute;left:50%;top:50%;margin-left:-250px;margin-top:-250px;}
+    #clock{width:500px;height:500px;position:absolute;left:0px;top:0px;border:1px solid red;border-radius:50%;}
+    #clock li {position:absolute;left:248px;top:0px;width:2px;height:10px;background:black;-webkit-transform-origin: center 250px;}
+    /*#clock li:nth-of-type(1) {-webkit-transform: rotate(0deg)}*/
+    /*#clock li:nth-of-type(2){-webkit-transform:rotate(6deg)}*/
+    /*#clock li:nth-of-type(3) {-webkit-transform: rotate(12deg)}*/
+    /*#clock li:nth-of-type(4) {-webkit-transform: rotate(18deg)}*/
+    /*#clock li:nth-of-type(5) {-webkit-transform: rotate(24deg)}*/
+    /*#clock li:nth-of-type(6) {-webkit-transform: rotate(30deg)}*/
+    #clock li:nth-of-type(5n+1){height:20px;}
+    #circle{width:20px;height:20px;position:absolute;left:240px;top:240px;background:blue;border-radius:10px;}
+    #hour{position:absolute;left:247px;top:170px;background:black;width:6px;height:80px;-webkit-transform-origin: bottom;}
+    #min{position:absolute;left:247px;top:130px;background:blue;width:6px;height:120px;-webkit-transform-origin: bottom;}
+    #sec{position:absolute;left:247px;top:70px;background:red;width:6px;height:180px;-webkit-transform-origin: bottom;}
+</style>
+<body>
+ <div class="main">
+      <ul id="clock">
+      </ul>
+     <div id="hour"></div>
+     <div id="min"></div>
+     <div id="sec"></div>
+     <div id="circle"></div>
+ </div>
+</body>
+<script>
+    window.onload = function(){
+        clock({content:"clock",hour:"hour",min:"min",sec:"sec"})
+        function clock(obj)
+        {
+            var Content = document.getElementById(obj.content);
+            var Hour = document.getElementById(obj.hour);
+            var Min = document.getElementById(obj.min);
+            var Sec = document.getElementById(obj.sec);
+            //创建节点
+
+            function CreateNode(){
+                var Str = "";
+                for(var i=0;i<60;i++)
+                {
+                    Str+='<li style="-webkit-transform: rotate('+i*6+'deg)"></li>';
+                }
+                Content.innerHTML = Str;
+            }
+            CreateNode();
+            //获取时间
+            function getTime(){
+                var NowDate = new Date();
+                var NowSec = NowDate.getSeconds();
+                var NowMin = Math.round(NowDate.getMinutes()+NowSec/60);
+                var NowHour = Math.round(NowDate.getHours()+NowMin/60);
+                var SecEdge = NowSec*6;
+                var MinEdge = NowMin*6;
+                var HourEdge = NowHour*30;
+                Hour.style["WebkitTransform"] = 'rotate('+HourEdge+'deg)';
+                Min.style["WebkitTransform"] = 'rotate('+MinEdge+'deg)';
+                Sec.style["WebkitTransform"] = 'rotate('+SecEdge+'deg)';
+            }
+            setInterval(getTime,1000);
+        }
+    }
+</script>
+</html>

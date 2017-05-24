@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>弹性盒模型(旧版本)</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    p{margin:0 auto;width:300px;}
+    .div1{display:-webkit-box;-webkit-box-orient: horizontal;-webkit-box-direction: normal;}
+    .div1 div{-webkit-box-flex: 3;-webkit-box-pack: justify;height:100px;background:red;margin-right:10px;}
+</style>
+<body>
+<p>
+    box-orient:代表横向还是纵向<br>
+    box-direction:代表元素的顺序<br>
+    box-ordinal-group:设置元素的具体位置<br>
+    box-flex:元素占了多少份<br>
+    box-pack:元素的水平位置<br>
+    box-align:元素的纵向位置<br>
+</p>
+<div class="div1">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+</body>
+</html>

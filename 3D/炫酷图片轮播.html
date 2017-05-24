@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>炫酷轮播</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    li{list-style-type: none;}
+    .wrap{width:800px;margin: 400px auto;}
+    #picList{width:800px;height:360px;/*景深*/-webkit-perspective: 800px;}
+    #picList li{float:left;width:50px;height:360px;position:relative;-webkit-transform-style:preserve-3d; -webkit-transform-origin: center center -180px;}
+    #picList li a{display:block;width:100%;height:100%;position:absolute;left:0px;top:0px;}
+    #picList li a:nth-of-type(1){background:url(images/1.jpg) no-repeat;}
+    #picList li a:nth-of-type(2){background:url(images/2.jpg) no-repeat;top:-360px;-webkit-transform-origin: bottom;-webkit-transform: rotateX(90deg);}
+    #picList li a:nth-of-type(3){background:url(images/3.jpg) no-repeat;-webkit-transform: translateZ(-360px) rotateX(180deg);}
+    #picList li a:nth-of-type(4){background:url(images/4.jpg) no-repeat;top:360px;-webkit-transform-origin: top;-webkit-transform: rotateX(-90deg);}
+    #picList li span{position:absolute;width:360px;height:360px;background:rgba(255,255,255,0.3);color:blue;font-size:60px;}
+    #picList li span:nth-of-type(1){-webkit-transform-origin: left;-webkit-transform: rotateY(90deg);left:0px;}
+    #picList li span:nth-of-type(2){-webkit-transform-origin: left;-webkit-transform: rotateY(90deg);left:50px;}
+    #btns{float:right;padding:10px 0;}
+    #btns li {width:40px; height:40px;text-align:center;background:#000;color:#fff;border-radius: 50%;font: 30px/40px "微软雅黑";float:left;margin:0 5px;}
+    #btns li.active{background:orange;color:black;}
+
+</style>
+<body>
+<div class="wrap">
+    <ul id="picList">
+
+    </ul>
+    <ol id="btns">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+</div>
+</body>
+<script>
+    var oPicList = document.getElementById("picList"); //找到UL
+    var aBtns = document.getElementById("btns");
+    var btnlength = aBtns.getElementsByTagName("li").length; //获取到所有的LI个数
+    var sLi = "";
+    var iLiw = 50;
+    var index = 0 ;
+    var iLength = oPicList.clientWidth/iLiw;
+   /*插入节点*/
+    for(var i=0;i<iLength;i++)
+   {
+       sLi += '<li><a href=""></a> <a href=""></a> <a href=""></a> <a href=""></a> <span></span> <span></span></li>';
+   }
+   /*插入背景和z-index*/
+    oPicList.innerHTML = sLi;
+    for(var m=0;m<iLength;m++)
+    {
+        m>iLength/2?--index:++index; /*修改层级，因为默认视觉的基点就是在中间。也就是说一开始中间的能看到右边，越往后中间的能看到左边。所以修改z-index即可*/
+        oPicList.getElementsByTagName("li")[m].style.zIndex=index; /*修改层级，因为默认视觉的基点就是在中间。也就是说一开始中间的能看到右边，越往后中间的能看到左边。所以修改z-index即可*/
+        for(var n=0;n<4;n++)
+        {
+            oPicList.getElementsByTagName("li")[m].getElementsByTagName("a")[n].style["backgroundPosition"] = "-"+m*iLiw+"px"+" 0";
+        }
+    }
+  /*插入点击事件*/
+  var old = 0 ;
+  for(var k=0;k<btnlength;k++)
+  {
+      aBtns.getElementsByTagName("li")[k].index = k ;
+      aBtns.getElementsByTagName("li")[k].onclick = function(){
+          var index =this.index;
+          for(var i=0;i<iLength;i++)
+          {
+              oPicList.getElementsByTagName("li")[i].style.transition = "0.5s "+i*150+"ms";
+          oPicList.getElementsByTagName("li")[i].style["WebkitTransform"] = "rotateX(-"+index*90+"deg)";
+          }
+          this.className="active";
+          aBtns.getElementsByTagName("li")[old].className = "";
+          old = index;
+      }
+
+  }
+
+
+  /*点击事件结束*/
+
+</script>
+</html>

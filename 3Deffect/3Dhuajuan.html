@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>3D画卷</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    .wrap{width:1200px;height:600px;position:absolute;left:50%;top:50%;margin-left: -600px;margin-top:-300px;border:1px solid #ccc;-webkit-perspective: 2400px;-webkit-transform-style: preserve-3d; }
+    .wrap h1{height:600px;width:100px;word-wrap:break-word;color:black;font-size:70px;letter-spacing: 4px;position:relative;text-align:center;z-index:999;background:black;color:white;}
+    .wrap h1 button{width:60px;height:60px;text-align:center;}
+    .wrap div{position:absolute;left:101px;top:0px;width:100px;height:100%;-webkit-transform-style: preserve-3d;-webkit-transform-origin: left;-webkit-transform: rotateY(180deg);}
+    .wrap>div{left:100px;}
+    .wrap div span{height:600px;width:100px;word-wrap:break-word;color:white;background:black;font-size:56px;text-align:center;display:block;border-right:1px dashed white;}
+    .wrap div.show{-webkit-animation: 1.3s show;-webkit-transform: rotateY(0deg);}
+    .wrap div.hide{-webkit-animation: 1.3s hide;-webkit-transform: rotateY(180deg);}
+    @-webkit-keyframes show {
+        0%{-webkit-transform: rotateY(180deg)}
+        25%{-webkit-transform: rotateY(-30deg)}
+        50%{-webkit-transform: rotateY(15deg)}
+        75%{-webkit-transform: rotateY(8deg)}
+        85%{-webkit-transform: rotateY(-8deg)}
+        90%{-webkit-transform: rotateY(4deg)}
+        100%{-webkit-transform: rotateY(0deg)}
+    }
+    @-webkit-keyframes hide {
+        0%{-webkit-transform: rotateY(0deg);}
+        100%{-webkit-transform: rotateY(180deg);}
+    }
+</style>
+<body>
+<div class="wrap" id="wrap">
+    <h1>笠翁对韵<button id="btn">展开</button></h1>
+    <div>
+        <span>天对地，雨对风。</span>
+        <div>
+            <span>大陆对长空。</span>
+            <div>
+                <span>山花对海树，</span>
+                 <div>
+                     <span>
+                       赤日对苍穹。
+                     </span>
+                     <div>
+                         <span>
+                          雷隐隐，雾蒙蒙。
+                         </span>
+                         <div>
+                             <span>
+                               日下对天中。
+                             </span>
+                             <div>
+                                 <span>
+                                     风高秋月白，
+                                 </span>
+                                 <div>
+                                     <span>
+                                           雨霁晚霞红。
+                                     </span>
+                                     <div>
+                                         <span>
+                                           牛女二星河左右，
+                                         </span>
+                                         <div>
+                                             <span>
+                                                参商两曜斗西东。
+                                             </span>
+                                               <div>
+                                                   <span>
+                                                       请看下页
+                                                   </span>
+                                               </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    var btn = document.getElementById("btn");
+    var wrap = document.getElementById("wrap");
+    var flag = true;
+    var index = 0 ;
+    var timer = null;
+    btn.onclick = function(){
+        //开始前清空定时器
+        clearInterval(timer);
+        if(flag)
+        {
+            timer = setInterval(function(){
+                wrap.getElementsByTagName("div")[index].className = "show";
+                ++index;
+                if(index == wrap.getElementsByTagName("div").length)
+                {
+                    clearInterval(timer);
+                    flag = false;
+                    btn.innerHTML = "收缩";
+                }
+
+            },100)
+        }else
+        {
+            timer = setInterval(function(){
+                --index;
+                wrap.getElementsByTagName("div")[index].className = "hide";
+                if(index == 0)
+                {
+                    clearInterval(timer);
+                    flag = true;
+                    btn.innerHTML = "展开";
+                }
+            },100)
+        }
+    }
+</script>
+</html>

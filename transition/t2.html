@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>transitionend</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    p{position:absolute;left:50%;top:30px;-webkit-transform: translate(-50%,-50%)}
+    div{width:100px;height:100px;position:absolute;left:50%;top:50%;-webkit-transform-origin: left top;background: red;transition: 2s;}
+    div:hover{-webkit-transform: rotate(360deg);}
+</style>
+<body>
+ <p>
+     这里主要是讲解在利用transition变形后，又想加效果只有监听transitionEnd事件
+ </p>
+<div id="div1">
+</div>
+</body>
+<script>
+    var oDiv1 = document.getElementById("div1");
+    function End(){
+        this.style["backgroundColor"] = "blue";
+        removeEnd();
+    }
+    function addEnd(){
+        oDiv1.addEventListener("webkitTransitionEnd",End);
+        oDiv1.addEventListener("transitionend",End);
+    }
+    function removeEnd(){
+        oDiv1.removeEventListener("webkitTransitionEnd",End);
+        oDiv1.removeEventListener("transitionend",End);
+    }
+    addEnd();
+</script>
+</html>

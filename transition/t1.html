@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>过渡1与变换基点</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    div{width:100px;height:100px;background:red;transition: 3s 1s ease;}
+    div:nth-of-type(1){position:absolute;left:50%;top:50%;-webkit-transform: translate(-50%,-50%);}
+    div:nth-of-type(2){position:absolute;left:50%;top:70%;-webkit-transform-origin:left top ;}
+    div:nth-of-type(1):hover{width:1000px;background:yellow;}
+    div:nth-of-type(2):hover{width:1000px;background:yellow;}
+    p:nth-of-type(1){position:absolute;left:50%;top:30px;-webkit-transform: translate(-50%,0%);}
+    p:nth-of-type(2){position:absolute;left:50%;top:60px;-webkit-transform: translate(-50%,0%);}
+    p:nth-of-type(3){position:absolute;left:50%;top:90px;-webkit-transform: translate(-50%,0%);}
+</style>
+<body>
+<p>transition:时间 延迟时间 动画效果</p>
+<p>基点:-webkit-transform-origin: x y z;可是百分比也可以是角度也可以是left center等等</p>
+<p>鼠标放到DIV上面1秒钟就有效果</p>
+<div>
+</div>
+<div>
+</div>
+</body>
+</html>

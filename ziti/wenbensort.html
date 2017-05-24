@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>文字排序与超出后隐藏</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    .p1{-webkit-transform: translate(-50%,-50%);font-size:48px;line-height:40px;position:absolute;left:50%;top:50%;direction: rtl;unicode-bidi: bidi-override;}
+    .p2{-webkit-transform: translate(-50%,-50%);font-size:24px;line-height:40px;position:absolute;left:50%;top:70%;width:80px;text-overflow: ellipsis;overflow:hidden;white-space: nowrap;}
+</style>
+<body>
+<p class="p1">
+    文字排序
+</p>
+<p class="p2">
+    文字超出后隐藏
+</p>
+</body>
+</html>

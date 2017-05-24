@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>3D轮播图</title>
+</head>
+<style>
+    *{margin:0px;paddding:0px;}
+    ul{list-style-type:none;}
+    .wrap{width:800px;height:360px;margin:100px auto;position:relative;}
+    #list{width:800px;height:360px;/*创建景深*/-webkit-perspective: 800px;}
+    /*创建3d空间的同时必须创建相对定位*/
+    #list div{width:50px;height:360px;/*创建3D空间*/-webkit-transform-style: preserve-3d;/*创建旋转的基点*/-webkit-transform-origin: center center -180px;float:left;position:relative;}
+    #list div a{display:block;width:100%;height:100%;position:absolute;}
+    #list div a:nth-of-type(1){left:0px;top:0px;background:url(images/1.jpg) no-repeat;}
+    #list div a:nth-of-type(2){left:0px;top:-360px;-webkit-transform-origin: bottom;-webkit-transform: rotateX(90deg);background:url(images/2.jpg) no-repeat;}
+    #list div a:nth-of-type(3){left:0px;top:0px;-webkit-transform: translateZ(-360px) rotateX(180deg);background:url(images/3.jpg) no-repeat;}
+    #list div a:nth-of-type(4){left:0px;top:360px;-webkit-transform-origin: top;-webkit-transform: rotateX(-90deg);background:url(images/4.jpg) no-repeat;}
+    #list div span{position:absolute;/*因为是侧面所以宽度和高度都必须以原模型的高度为准*/width:360px;height:360px;-webkit-transform-origin: left;display:block;}
+    #list div span:nth-of-type(1){background:rgba(234,234,234,0.3);left:0px;-webkit-transform: rotateY(90deg);}
+    #list div span:nth-of-type(2){background:rgba(234,234,234,0.3);left:50px;-webkit-transform: rotateY(90deg);}
+    #btns {padding:10px 0px;position: absolute;right:0px;bottom:0px;}
+    #btns li{width:50px;height:50px;background:black;color:#ffffff;font:24px/50px "微软雅黑";float:left;margin:0 10px;border-radius:50%;text-align:center;}
+    #btns li.active{background:orchid;color:black;}
+</style>
+<body>
+  <div class="wrap">
+       <div id="list">
+
+       </div>
+       <ul id="btns">
+           <li class="active">1</li>
+           <li>2</li>
+           <li>3</li>
+           <li>4</li>
+       </ul>
+  </div>
+</body>
+<script>
+
+    window.onload= function(){
+        var box = document.getElementsByClassName("wrap")[0];
+        var btns = document.getElementById("btns");
+        var Picall = document.getElementById("list");
+        Rotate3D(box,btns,Picall);
+        function Rotate3D(box,btns,Picall)
+        {
+            var width = 50;
+            var length = Math.floor(box.clientWidth/width);
+            var liall = "";
+            var index = 0 ;
+            var old = 0 ;
+            /*创建结点*/
+            function createNode() {
+
+                for(var i=0;i<length;i++)
+                {
+                    liall+='<div> <a href=""></a> <a href=""></a> <a href=""></a> <a href=""></a> <span></span> <span></span> </div>'
+                }
+                Picall.innerHTML = liall;
+            }
+            createNode();
+            /*创建结点结束*/
+            /*消除多余的背景*/
+            function clear(){
+                for(var i=0;i<length;i++)
+                {
+                    i>length/2 ? --index:++index;
+                    Picall.getElementsByTagName("div")[i].style.zIndex = index;
+                }
+            }
+            clear();
+            /*消除结束*/
+            /*背景图片开始*/
+               function bg(){
+                   for(var i=0;i<length;i++)
+                   {
+                       for(var n=0;n<4;n++)/*因为4个a标签*/
+                       {
+                           Picall.getElementsByTagName("div")[i].getElementsByTagName("a")[n].style["backgroundPosition"] = -width*i+ "px 0px"
+                       }
+                   }
+
+               }
+               bg();
+            /*背景图片结束*/
+            for(var i=0;i<4;i++)
+            {
+                btns.children[i].index = i ;
+                btns.children[i].onclick = function(){
+                    var index = this.index;  //获取到序号
+                    for(var i=0;i<length;i++)
+                    {
+                        Picall.getElementsByTagName("div")[i].style.transition = "1s "+i*100+"ms";
+                        Picall.getElementsByTagName("div")[i].style["WebkitTransform"] = "rotateX("+index*90+"deg)";
+                    }
+                    this.className="active";
+                    btns.children[old].className="";
+                    old = index;
+                }
+            }
+
+            }
+
+
+
+
+    }
+
+</script>
+</html>

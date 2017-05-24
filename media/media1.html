@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>内部响应式</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    @media screen and (min-width:640px)  {   /*宽屏*/
+          #div1{background:red;width:200px;height:200px;margin:0 auto;}
+          #div2{background:yellow;width:200px;height:200px;margin:10px auto;}
+          #div3{background:blue;width:200px;height:200px;margin:10px auto;}
+    }
+    @media screen and (min-width:325px) and (max-width:375px){ /*移动端Iphone4~6*/
+        #div1{background:green;width:200px;height:200px;margin:0 auto;}
+        #div2{background:orange;width:200px;height:200px;margin:10px auto;}
+        #div3{background:rosybrown;width:200px;height:200px;margin:10px auto;}
+    }
+    @media screen and (min-width:376px) and (max-width:414px)/*移动端iphone6s大小*/
+    {
+        #div1{background:#20A4BC;width:100px;height:200px;margin:0 auto;}
+        #div2{background:#9c9c9c;width:100px;height:200px;margin:10px auto;}
+        #div3{background:#8B4512;width:100px;height:200px;margin:10px auto;}
+    }
+</style>
+<body>
+   <div id="div1"></div>
+   <div id="div2"></div>
+   <div id="div3"></div>
+</body>
+</html>

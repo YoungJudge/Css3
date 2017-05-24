@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>绕Y轴旋转</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    div{width:100px;height:100px;padding: 100px;border:10px solid blanchedalmond;-webkit-transform-style: preserve-3d;-webkit-perspective: 100px;margin:0 auto;}
+    p{width:100px;height:100px;background:red;transition: 2s;line-height:100px;text-align:center;}
+    p span{transition: 1s;}
+    div:hover p{-webkit-transform: rotateY(180deg) ;}
+    div:hover p span{-webkit-transform: rotateY(-180deg) ;display:block;}
+</style>
+<body>
+  <div>
+       <p>
+           <span>2</span>
+       </p>
+  </div>
+</body>
+</html>

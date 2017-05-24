@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>多背景</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    div{border:2px solid red;background:url(images/Rect.jpg) no-repeat 0 -100px ,url(images/Rect2.jpg) no-repeat -100px 400px ;width:400px;height:800px;position:absolute;left:50%;top:50%;-webkit-transform: translate(-50%,-50%)}
+    p{position:absolute;left:50%;top:10px;-webkit-transform: translate(-50%,0%);}
+</style>
+<body>
+<p>background:url(images/Rect.jpg) no-repeat 0 100px这里面100px代表的不是图片的高度而是位置，表示图片里面的100px高度的位置</p>
+ <div></div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>CSS3属性第一讲</title>
+</head>
+<style>
+    *{padding:0px;margin:0px;}
+    p{font-size:24px;line-height:24px;text-align:center;margin:50px auto;border:1px solid black;}
+    ul{list-style-type: none;}
+    li{width:400px;height:30px;line-height:30px;margin:10px auto;text-align:center;}
+    li[class=li1]{background:black;color:white;}
+    li[bbbb]{background:red;color:yellow;}
+    li[class~=bbbb]{background:blue;color:white;}
+    li[class^=yin]{background:yellow;color:red;}
+    li[class$=wei]{background:pink;color:black;}
+    li[class*=haha]{background:#E7E7B5;color:#3e3e3e;}
+    li[class|=abc]{background:#6BA542;color:#8B4512;}
+</style>
+<body>
+<P>CSS3属性选择器</P>
+<p>
+    特别注意类名开头不是是数字！！</br>
+    E[attr] 只使用属性名,但没有确定任何属性值</br>
+    E[attr=value] 指定属性名,并指定了该属性的属性值</br>
+    E[attr~=value]指定属性名,并有属性值.此属性值是一个词列表,并且以空格隔开,其中词列表包含了一个value词,而且等号前面的"~"不能不写</br>
+    E[attr^=value]指定了属性名,并且有属性值,属性值是以value开头的</br>
+    E[attr$=value]指定了属性名,并且有属性值,而且属性值是以value结束的</br>
+    E[attr*=value]指定了属性名,并且有属性值,而且属性中包含了value</br>
+    E[attr|=value]指定了属性名,并且属性值是value或者以"value-"开头的值比如说(zh-cn)</br>
+</p>
+<ul>
+    <li class="li1">利用li[class=li1]找到的</li>
+    <li bbbb="li2">利用自定义属性bbbb找到的</li>
+    <li class="aaa bbbb">利用~分隔符找到的切换的类bbbb</li>
+    <li class="yin1">利用^代表开头是yin找到的</li>
+    <li class="jiewei">利用$代表结尾是wei找的的</li>
+    <li class="hahaha">利用的是*代表只要类名里面有haha就能找到</li>
+    <li class="abc-haha">利用的是|=代表类名是class=abc-xxx,找到的</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>CSS3炫酷导航</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    #content{width:600px;height:600px;position:absolute;left:50%;top:50%;margin-left:-300px;margin-top:-300px;border:1px solid red;}
+    #content div{border-radius:50%;width:50px;height:50px;position:absolute;left:50%;top:50%;margin-left:-25px;margin-top:-25px;background:black;color:white;line-height:50px;text-align:center;font-size:18px;transition: 2s;}
+    #content p{-wbkit-transform-origin:center center;border-radius:50%;width:50px;height:50px;position:absolute;left:275px;top:275px;background:black;color:white;line-height:50px;text-align:center;font-size:18px;}
+    #content div:nth-of-type(1){z-index:999;}
+
+</style>
+<body>
+<div id="content">
+     <div>点</div>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+    <p>9</p>
+    <p>10</p>
+    <p>11</p>
+    <p>12</p>
+</div>
+</body>
+<script>
+    window.onload = function(){
+        var flag = true;
+        document.getElementById("content").children[0].onclick = function(){
+            if(flag)
+            {
+                this.style["webkitTransform"]="rotate(360deg)";
+                for(var i=0;i<12;i++)
+                {
+                    var obj =toLT(-200,30*i);
+                     document.getElementById("content").getElementsByTagName("p")[i].style["transition"] = "2s "+i*100+"ms";
+                    document.getElementById("content").getElementsByTagName("p")[i].style["WebkitTransform"] = "rotate(360deg)";
+                    document.getElementById("content").getElementsByTagName("p")[i].style["left"] = parseInt(obj.l+275)+"px";
+                    document.getElementById("content").getElementsByTagName("p")[i].style["top"] = parseInt(obj.t+275)+"px";
+                }    
+            }else
+            {
+                this.style["webkitTransform"]="rotate(0deg)";
+                for(var i=0;i<12;i++)
+                {
+                    var obj =toLT(-200,30*i);
+                    document.getElementById("content").getElementsByTagName("p")[11-i].style["transition"] = "2s "+i*100+"ms";
+                    document.getElementById("content").getElementsByTagName("p")[11-i].style["WebkitTransform"] = "rotate(360deg)";
+                    document.getElementById("content").getElementsByTagName("p")[11-i].style["left"] = parseInt(275)+"px";
+                    document.getElementById("content").getElementsByTagName("p")[11-i].style["top"] = parseInt(275)+"px";
+                }
+
+            }
+             flag = !flag;
+        }
+        /*获取到坐标*/
+        function toLT(iR,iDeg)
+        {
+            return {l:Math.round(Math.sin(iDeg/180*Math.PI)*iR),t:Math.round(Math.cos(iDeg/180*Math.PI)*iR)}
+        }
+        for(var i=0;i<12;i++)
+        {
+            document.getElementById("content").getElementsByTagName("p")[i].onclick = function(){
+                this.style.transition = "0.5s";
+                this.style.WebkitTransform = " scale(2) rotate(-720deg)";
+                this.style.opacity = 0.1;
+                addEnd(this,end);
+            }
+        }
+        /*点击完了后在变回来*/
+        function addEnd(obj,fn)
+        {
+            obj.addEventListener('WebkitTransitionEnd',end);
+            obj.addEventListener('transitionend',end);
+        }
+        function end(){
+            this.style.transition = "1s";
+            this.style.WebkitTransform = " scale(1) rotate(-720deg)";
+            this.style.opacity = 1;
+            removeEvent(this,end);
+        }
+        function removeEvent(obj,fn){
+            obj.removeEventListener('WebkitTransitionEnd',fn,false);
+            obj.removeEventListener('transitionend',fn,false);
+        }
+    }
+</script>
+</html>

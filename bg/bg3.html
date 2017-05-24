@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>背景切割</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    div{width:300px;height:300px;border:10px solid red;margin:30px auto;}
+    div:nth-of-type(1){background:url(images/Rect.jpg);background-clip: border-box;background-size:100% 100%;}
+    div:nth-of-type(2){background:url(images/Rect.jpg);background-clip: padding-box;background-size:100% 100%;}
+    div:nth-of-type(3){padding:10px;background:url(images/Rect.jpg);background-clip: content-box;background-size:100% 100%;}
+    p{position:absolute;left:50%;top:10px;-webkit-transform: translate(-50%,0);}
+</style>
+<body>
+    <p>第一个按照边框切割，第二个按照正常切割。第三个按照内容切割</p>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

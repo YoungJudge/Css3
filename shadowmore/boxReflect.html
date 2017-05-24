@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>盒子倒影</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    div{width:100px;height:100px;position:absolute;left:50%;top:50%;-webkit-transform: translate(-50%,-50%);-webkit-box-reflect: below 20px -webkit-linear-gradient(bottom,rgba(255,255,255,1) 60%,rgba(255,255,255,0.2) 90%)}
+    div img{display:block;width:100%;height:100%;}
+</style>
+<body>
+<div>
+    <img src="images/Rect.jpg">
+</div>
+</body>
+</html>

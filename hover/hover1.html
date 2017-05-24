@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title>css3伪类</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    p{position:absolute;left:50%;top:30px;-webkit-transform: translate(-50%,0%);border:1px solid #ccc;line-height:25px;padding:10px;}
+    a{text-decoration: none;color:white;display:block;position:absolute;left:50%;top:30px;-webkit-transform: translate(-50%,0%);border:1px solid #ccc;line-height:25px;padding:10px;}
+    div{-webkit-transform: translate(-50%,0%);position:absolute;left:50%;background:black;color:white;font-size:20px;}
+    div:nth-of-type(1){top:280px;}
+    div:nth-of-type(1):first-letter{font-size:26px;color:red;}
+    div:nth-of-type(2){width:150px;top:340px;}
+    div:nth-of-type(2):first-line{font-size:24px;color:red;}
+    a:nth-of-type(1){top:420px;display:block;background:black;}
+    div:nth-of-type(3){top:480px;display:none;}
+    div:target{border:10px solid red;display: block;}
+    div:nth-of-type(4){top:560px;}
+    div:nth-of-type(4)::selection{color:orange;}
+    div:nth-of-type(5){top:600px;}
+    div:nth-of-type(5):before{content:"帅哥";font-size:24px;color: red;}
+    div:nth-of-type(6){top:630px;}
+    div:nth-of-type(6):after{content:"美女";font-size:34px;color:red;}
+    div:nth-of-type(7){color:white;top:680px;}
+    div:nth-of-type(7)~div{color:blue;top:730px;}
+</style>
+<body>
+    <p>
+        E:first-letter 表示元素下面的第一个字符<br>
+        E:first-line表示元素下面的第一行<br>
+        E:target类似锚点的功能<br>
+        E:selection 表示选中的文字<br>
+        E:before表示节点前面插入字符必须跟content<br>
+        E:after 表示节点后面插入字符必须跟content<br>
+        E:not(s)s里面可以是标签，类名，ID表示除去这个元素<br>
+        E~F表示E下面的相连F（同级节点并且级别比E低）<br>
+    </p>
+  <div>我在哭，只是没有人在乎</div>
+    <div>没有答案，你是谁的新欢和旧爱？</div>
+     <a href="#div1"> 点击我下面显示</a>
+    <div id="div1">就让我忙到疯掉，忙到忘记我是谁</div>
+    <div>选中后颜色变色。开始改变</div>
+    <div>利用before前面插入了帅哥</div>
+    <div>利用after后面插入了美女</div>
+    <div>
+         最后一个
+    </div>
+    <div>第一个</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>Flex2布局</title>
+</head>
+<style>
+    *{margin:0px;padding:0px;}
+    body{display:flex;justify-content: center;}
+    .content{flex:0 1 640px;background:orange;display:flex;flex-flow: column nowrap;}
+    .header{flex:0 1 100px;background:black;color:white;}
+    .nav{flex:0 1 50px;background:red;color:black;}
+    .part1{flex:0 1 230px;background:yellow;display:flex;flex-flow: row wrap;justify-content: space-between;padding:10px 10px 0px 10px;}
+    .part1 div{flex:0 2 45%;background:black;color:white;margin-bottom:10px;}
+    .part2{flex:0 1 180px;background:green;display: flex;flex-flow: row nowrap;}
+    .part2>div:nth-of-type(1){flex:0 1 30px;background:black;}
+    .part2>div:nth-of-type(2){flex: 1 1 ; background:burlywood;display:flex;justify-content:space-between;padding:10px 10px 0px 10px;flex-flow: row wrap;}
+    .part2>div:nth-of-type(2) div{background:rosybrown;flex:0 1 45%;margin-bottom: 10px;}
+    .part3{flex:0 1 150px;background:blueviolet;display:flex;flex-flow: row nowrap;justify-content: space-around;}
+    .part3>div{flex:0 1 33.3%;border-right:1px dashed #ccc;}
+    .part3_1{display: flex;flex-flow:column nowrap;}
+    .part3_1 div{ background:#b2e2fa;flex: 0 1 60px;margin-top:10px;}
+    .part3_2{display:flex;flex-flow:row nowrap;}
+    .part3_2>div{flex:1 1;border-right:1px dashed white;text-align:center;color:white;font-size:16px;line-height:150px;}
+    .part3>div:nth-of-type(3){border-right:none;}
+    .part3_3{display:flex;justify-content: center;align-items: center;}
+    .part3_3 div{flex:0 1 100px;background:#0F4D04;height:100px;}
+    .footer{flex:0 1 200px;background:brown;display: flex;flex-flow:column nowrap;}
+    .footer div{flex:0 1 40px;  background: #000;margin-top:10px;color:white;}
+</style>
+<body>
+<div class="content">
+    <div class="header">头部</div>
+    <div class="nav">导航</div>
+    <div class="part1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+    <div class="part2">
+         <div>侧边栏目</div>
+         <div>
+             <div></div>
+             <div></div>
+             <div></div>
+             <div></div>
+         </div>
+    </div>
+    <div class="part3">
+        <div class="part3_1">
+            <div>1</div>
+            <div>2</div>
+        </div>
+        <div class="part3_2">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <div class="part3_3">
+            <div>1</div>
+        </div>
+    </div>
+    <div class="footer">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</div>
+</body>
+</html>
